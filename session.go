@@ -101,7 +101,7 @@ func newSession(config *Config, conn io.ReadWriteCloser, client bool) *Session {
 		inflight:   make(map[uint32]struct{}),
 		synCh:      make(chan struct{}, config.AcceptBacklog),
 		acceptCh:   make(chan *Stream, config.AcceptBacklog),
-		sendCh:     make(chan sendReady, 64),
+		sendCh:     make(chan sendReady, 256),
 		recvDoneCh: make(chan struct{}),
 		shutdownCh: make(chan struct{}),
 	}
